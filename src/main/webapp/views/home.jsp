@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: DELL
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -35,12 +37,25 @@
                 <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Tài Khoản</a>
-                <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="/register">Đăng ký</a>
-                    <a class="dropdown-item" href="#">Đăng nhập</a>
-                </div>
+                <c:choose>
+                    <c:when test="${sessionScope.userLogin !=null}">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">${sessionScope.userLogin.fullName}</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="/logout">Đăng xuất</a>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true"
+                           aria-expanded="false">Tài Khoản</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="/register">Đăng ký</a>
+                            <a class="dropdown-item" href="/login">Đăng Nhập</a>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+
+
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
