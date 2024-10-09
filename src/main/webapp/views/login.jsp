@@ -34,6 +34,10 @@
                     <label >Password</label>
                     <f:input type="password" class="form-control" path="password"/>
                 </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" value="1" name="check">
+                    <label class="form-check-label" >Lưu tài khoản</label>
+                </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </f:form>
         </div>
